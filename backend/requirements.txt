@@ -1,6 +1,7 @@
 # ──────────────────────────────────────────────────────────────────────────────
 # Plant Disease Detection — Python Dependencies
-# Install: pip install -r backend/requirements.txt
+# Install (Windows; Python 3.11 recommended):
+#   py -3.11 -m pip install --no-cache-dir --timeout 300 --retries 10 -r backend/requirements.txt
 # ──────────────────────────────────────────────────────────────────────────────
 
 # Web framework
@@ -9,6 +10,7 @@ uvicorn[standard]==0.29.0
 python-multipart==0.0.9
 
 # ML / Deep Learning (Keras / TensorFlow for .h5 MobileNetV2 model)
+# The Windows TensorFlow wheel is large; use a longer timeout and retries on slow connections.
 # TF 2.16+ ships Keras 3 — pin to a stable 2.x series for .h5 compatibility
 tensorflow==2.16.1
 numpy==1.26.4

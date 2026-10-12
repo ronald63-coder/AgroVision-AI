@@ -42,17 +42,20 @@ AgroVision AI is a production-ready plant leaf disease diagnosis and agronomic i
 ## 🚀 Running Locally (Full Stack)
 
 ### Quick Start (Windows)
-Double-click `START_BACKEND.bat` in the project root, or run:
+For first-time setup, run the commands below. Once dependencies are installed, you can launch the backend by double-clicking `START_BACKEND.bat`.
 
 ```powershell
-# 1. Install dependencies
-pip install -r backend/requirements.txt
+# 1. Create a Python 3.11 virtual environment and install dependencies.
+# TensorFlow's Windows wheel is large; the longer timeout and retries help on slow connections.
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install --no-cache-dir --timeout 300 --retries 10 -r backend\requirements.txt
 
 # 2. Configure environment (add your GEMINI_API_KEY in .env)
 copy .env.example .env
 
 # 3. Launch unified server
-python run.py
+.\.venv\Scripts\python.exe run.py
 ```
 
 The application will be live at:
@@ -68,7 +71,7 @@ This repository includes deployment configurations (`Procfile` and `render.yaml`
 
 ### Deploying on Render (Free Tier):
 1. Create a free account at [render.com](https://render.com).
-2. Click **New +** → **Web Service** → Connect your GitHub repository `ShahHassanNawab/AgroVision_Ai`.
+2. Click **New +** → **Web Service** → Connect your GitHub repository `ronald63-coder/AgroVision-AI`.
 3. Configure the settings:
    * **Runtime:** `Python 3`
    * **Build Command:** `pip install -r backend/requirements.txt`

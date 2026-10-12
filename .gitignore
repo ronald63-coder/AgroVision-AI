@@ -1,6 +1,7 @@
 # Environment and Secrets
 .env
-.env.local
+.env.*
+!.env.example
 *.key
 *.pem
 
@@ -21,6 +22,7 @@ ENV/
 
 # Temporary / Scratch
 data/*.tmp
+data/history.json
 .system_generated/
 *.log
 
