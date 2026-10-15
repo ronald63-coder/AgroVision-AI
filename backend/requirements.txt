@@ -13,7 +13,7 @@ python-multipart==0.0.9
 numpy==1.26.4
 
 # Image processing
-Pillow==10.3.0
+Pillow>=10.0.0
 
 # Gemini Vision API (google-genai is the new unified SDK; google-generativeai is legacy)
 google-genai==0.8.0
