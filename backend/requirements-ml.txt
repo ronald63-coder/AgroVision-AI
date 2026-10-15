@@ -1,0 +1,6 @@
+# Optional local MobileNetV2 inference support.
+# TensorFlow's Windows wheel is large; Python 3.11 is recommended.
+# Install from the project root with:
+#   .\.venv\Scripts\python.exe -m pip install --no-cache-dir --timeout 300 --retries 10 -r backend\requirements-ml.txt
+# TF 2.16+ ships Keras 3 — pin to a stable 2.x series for .h5 compatibility.
+tensorflow==2.16.1

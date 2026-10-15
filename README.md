@@ -45,11 +45,14 @@ AgroVision AI is a production-ready plant leaf disease diagnosis and agronomic i
 For first-time setup, run the commands below. Once dependencies are installed, you can launch the backend by double-clicking `START_BACKEND.bat`.
 
 ```powershell
-# 1. Create a Python 3.11 virtual environment and install dependencies.
-# TensorFlow's Windows wheel is large; the longer timeout and retries help on slow connections.
+# 1. Create a Python 3.11 virtual environment and install the core API dependencies.
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
-.\.venv\Scripts\python.exe -m pip install --no-cache-dir --timeout 300 --retries 10 -r backend\requirements.txt
+.\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
+
+# Optional: install TensorFlow for local MobileNetV2 inference.
+# This downloads a large wheel; omit this step if you only use Gemini Vision.
+.\.venv\Scripts\python.exe -m pip install --no-cache-dir --timeout 300 --retries 10 -r backend\requirements-ml.txt
 
 # 2. Configure environment (add your GEMINI_API_KEY in .env)
 copy .env.example .env
@@ -81,6 +84,8 @@ This repository includes deployment configurations (`Procfile` and `render.yaml`
 5. Click **Deploy Web Service**.
 6. Copy your Render URL (e.g., `https://agrovision-ai.onrender.com`) and paste it into the frontend's **Configure Backend API** modal!
 
+TensorFlow is not installed by the default deployment build. The backend can use Gemini Vision when `GEMINI_API_KEY` is configured; local MobileNetV2 inference and Grad-CAM require installing `backend/requirements-ml.txt`.
+
 ---
 
 ## 🧪 Testing
@@ -90,4 +95,4 @@ Run the automated integration test suite:
 ```powershell
 python tests/test_backend.py
 ```
-This tests all 11 core endpoints including TensorFlow inference, Grad-CAM generation, image validation, chatbot responses, and static file delivery.
+This tests the core endpoints, image validation, chatbot responses, and static file delivery. Local model prediction and Grad-CAM are available when the optional TensorFlow dependencies are installed.

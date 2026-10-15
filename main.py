@@ -158,7 +158,8 @@ async def lifespan(application: FastAPI):
             logger.info("✓ MobileNetV2 model loaded successfully.")
         except ImportError:
             logger.error(
-                "TensorFlow is not installed. Run: pip install tensorflow"
+                "TensorFlow is not installed. Install optional ML dependencies with: "
+                "pip install -r backend/requirements-ml.txt"
             )
             application.state.model = None
         except Exception as e:

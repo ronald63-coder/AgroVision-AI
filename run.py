@@ -57,8 +57,8 @@ def main():
         tf_ver = tf.__version__
         print(f"[TensorFlow]   ✓  version {tf_ver}")
     except ImportError:
-        print("[TensorFlow]   !  Not installed. Model inference will be disabled.")
-        print("               Run:  pip install tensorflow")
+        print("[TensorFlow]   !  Not installed. Local model inference will be disabled.")
+        print("               Optional install: python -m pip install -r backend/requirements-ml.txt")
 
     # ── 3. Gemini API key ────────────────────────────────────────────────
     env_file = base_dir / ".env"
